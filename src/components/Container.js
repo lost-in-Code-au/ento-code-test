@@ -21,6 +21,11 @@ const MockData = [
     crit: false, alert: false
   }
 ]
+const MockItems = [
+    { id: 5, name: "Reece", rolls: ["chef"], shift: [{date: "", startTime:"", endTime:""}], crit: '1 crit', alert: '1 alert' },
+    {id: 8, name: "Jake", rolls: ["Barista","Lockup"], shift: [{date: "", startTime:"", endTime:""}], crit: '1 crit', alert: false },
+    {id: 12, name: "John", rolls: ["Barista","Lockup"], shift: [{date: "", startTime:"", endTime:""}], crit: '1 crit', alert: false }
+  ]
 
 class Container extends React.Component {
 
@@ -29,16 +34,27 @@ class Container extends React.Component {
 
     this.state = {
       employees: MockData,
-      items: [{ id: 5, name: "Reece", roll: ["chef"], shift: [{date: "", startTime:"", endTime:""}],
-      crit: '1 crit', alert: '1 alert' }]
+      items: MockItems
     };
+  }
+
+  updateItems = (newItem) => {
+    const items = [...this.state.items]
+    items.push(newItem)
+    this.setState({...this.state, items: items})
+  }
+  
+  deleteItem = (index) => {
+    const items = [...this.state.items]
+    items.splice(index, 1);
+    this.setState({...this.state, items: items});
   }
 
   render() {
     return (
       <div className="Scheduler">
-        <Form employees={this.state.employees} />
-        <OverView items={this.state.items} />
+        <Form employees={this.state.employees} updateItems={this.updateItems.bind(this)} />
+        <OverView items={this.state.items} deleteItem={this.deleteItem.bind(this)} />
       </div>
     );
   }

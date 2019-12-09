@@ -13,38 +13,36 @@ class Form extends React.Component  {
         [{ id: "0", name: "No Employees available", rolls: "", 
           shift: [ {date: "", startTime:"", endTime:""}]}] ),
       selectedEmployee: null,
-      time: ["9:00","16:00"],
-      // endTime: null
+      time: ["9:00","16:00"]
     };
   }
-  
+    
+  onEmployeeChange = (event) => {
+    console.log('event', event)
+    this.setState({ ...this.state, selectedEmployee: event.target });
+  }
+
   onDateChange = (date) => {
     console.log('onDateChange', date)
     this.setState({ ...this.state, date });
   }
-  
-  onEmployeeChange = (selectedEmployee) => {
-    console.log('selectedEmployee', selectedEmployee)
-    this.setState({ ...this.state, selectedEmployee: selectedEmployee });
-  }
 
-  // onTimeRangePickers = (e) => {
-  //   console.log('onTimeRangePickers', e)
-  //   // debugger
-  //   const timeKey = e.startTime ? "startTime" : "endTime";
-  //   this.setState({ ...this.state, [timeKey]: e[timeKey] });
-  // }
-
-  onChange = time => {
+  onChange = (time) => {
       console.log('onTimeRangePickers', time)
     this.setState({ time:[ time.startTime, time.endTime ] })
   }
   
-  
+  onSubmit = (event) => {
+    event.preventDefault()
+
+    console.log(this.props)
+    console.log("State:",this.state)
+    const newItem = {id: 8, name: "jeff", rolls: ["Barista","Lockup"], shift: [{date: "", startTime:"", endTime:""}], crit: '1 crit', alert: false }
+    console.log('newItem', newItem)
+    this.props.updateItems(newItem)
+  }
 
   render() {
-    console.log("State:",this.state)
-    // console.log("Props:",this.props)
     return (
       <form className="Form">
         <h1>Form</h1>
@@ -54,7 +52,7 @@ class Form extends React.Component  {
             <select
               className="employee-picker"
               value={this.state.selectedEmployee ? this.state.selectedEmployee : <option className="">select a employee</option>}
-              onChange={this.onEmployeeChange}
+              onChange={(e) => this.onEmployeeChange(e)}
             >
               {this.state.employees.map((item) => {
                 console.log(item.name)
@@ -81,7 +79,7 @@ class Form extends React.Component  {
               onChange={this.onChange}
             />
           </div>
-          <button>Submit</button>
+          <button onClick={(e)=> this.onSubmit(e)}>Submit</button>
         </div>
       </form>
     );
