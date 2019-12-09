@@ -1,12 +1,18 @@
 .Scheduler {
   display: flex;
   background-color: coral;
-  height: 200px;
+  height: 80vh;
   color: white;
   .Form {
     flex-grow: 1;
+
     border: white 1px solid;
 
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     color: white;
   }
 

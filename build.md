@@ -9,7 +9,7 @@ While waiting on a planned meeting with my supervior I started to setup the envi
 
 4. installed node-sass so I could use varitables and nested classnames in my css
 5. converted css file to scss
-6. installed react-modal
+6. installed react-modal, react-redux, mocha
 
 
 ** installed tec
@@ -18,8 +18,19 @@ yarn
 node-sass
 react-modal
 react-redux
-mocca
+react-test-renderer
 
 ** Resrceached tec
 
 Redux
+
+** test setup
+
+added test support for the builted into jest test enviroment with this guild => 
+https://jestjs.io/docs/en/tutorial-react#setup-with-create-react-app
+
+You can just run
+```sh
+yarn test
+```
+in terminal to have test running
