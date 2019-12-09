@@ -4,10 +4,22 @@ import OverView from './OverView'
 import { render } from '@testing-library/react';
 
 const MockData = [
-  { id: 1, name: "James", rolls: ["Chef","Lockup"], shift: [ {date: "", startTime:"", endTime:""}]},
-  { id: 2, name: "Rob", rolls: ["Barista","Lockup"], shift: [ {date: "", startTime:"", endTime:""}]},
-  { id: 3, name: "Rachel", rolls: ["Waitress","Kichten"], shift: [ {date: "", startTime:"", endTime:""}]},
-  { id: 4, name: "Kath", rolls: ["Waitress","Lockup"], shift: [ {date: "", startTime:"", endTime:""}]}
+  { id: 1, name: "James", rolls: ["Chef","Lockup"],
+    shift: [ {date: "", startTime:"", endTime:""}],
+    crit: false, alert: false
+  },
+  { id: 2, name: "Rob", rolls: ["Barista","Lockup"],
+    shift: [ {date: "", startTime:"", endTime:""}],
+    crit: false, alert: false
+  },
+  { id: 3, name: "Rachel", rolls: ["Waitress","Kichten"],
+    shift: [ {date: "", startTime:"", endTime:""}],
+    crit: false, alert: false
+  },
+  { id: 4, name: "Kath", rolls: ["Waitress","Lockup"],
+    shift: [ {date: "", startTime:"", endTime:""}],
+    crit: false, alert: false
+  }
 ]
 
 class Container extends React.Component {
@@ -17,7 +29,7 @@ class Container extends React.Component {
 
     this.state = {
       employees: MockData,
-      items: [{ id: 5, name: "Reece", roll: ["chef"], shift: [ {date: "", startTime:"", endTime:""}] }]
+      items: [{ id: 5, name: "Reece", roll: ["chef"], shift: [{date: "", startTime:"", endTime:""}] }]
     };
   }
 
