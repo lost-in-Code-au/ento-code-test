@@ -29,7 +29,8 @@ class Container extends React.Component {
 
     this.state = {
       employees: MockData,
-      items: [{ id: 5, name: "Reece", roll: ["chef"], shift: [{date: "", startTime:"", endTime:""}] }]
+      items: [{ id: 5, name: "Reece", roll: ["chef"], shift: [{date: "", startTime:"", endTime:""}],
+      crit: '1 crit', alert: '1 alert' }]
     };
   }
 

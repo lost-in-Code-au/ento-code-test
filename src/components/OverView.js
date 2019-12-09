@@ -3,15 +3,17 @@ import React from 'react';
 class OverView extends React.Component  {
   
   doesItemHaveMessage = (item) => {
-    if(item.crit) {
-      return <span>{item.crit}</span>
-    } else {
-      return <span>{t=item.alert}</span>
-    };
+    console.log(item)
+  
+    if (item.crit && item.alert) {
+      return  <div className="crit-alert-msg"><span>{item.crit}</span><span>{item.alert}</span></div>
+    } 
+    
   };
 
   renderItems = (items) => {
     items.map((item)=> {
+      console.log("boom",item)
       return (
         <div className="item">
           <p>{item.name}</p> <p>Roll: {item.roll}</p> { item.crit || item.alert ? this.doesItemHaveMessage(item) : null }
@@ -21,12 +23,12 @@ class OverView extends React.Component  {
   };
   
   render() {
-    const { items } = this.props
+    const items = this.props.items
     return (
       <div className="Over-view">
         <h3>Over-view</h3>
         <div>
-            { (this.props.items ? this.renderItems(items) : <div>Nope!</div>)}
+            { (items ? this.renderItems(items) : <div>Nope!</div>)}
         </div>
       </div>
     );
