@@ -17,7 +17,8 @@ node
 yarn
 node-sass
 react-modal
-redux
+react-redux
+mocca
 
 ** Resrceached tec
 
