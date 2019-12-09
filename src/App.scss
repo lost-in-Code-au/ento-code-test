@@ -1,9 +1,32 @@
+.Scheduler {
+  display: flex;
+  background-color: coral;
+  height: 200px;
+  color: white;
+  .Form {
+    flex-grow: 1;
+    border: white 1px solid;
+
+    color: white;
+  }
+
+  .Over-view {
+    flex-grow: 3;
+    border: white 1px solid;
+    color: white;
+  }
+}
+
+.App-header {
+  display: flex;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 4vmin;
   pointer-events: none;
 }
 
@@ -13,12 +36,12 @@
   }
 }
 
-.App-header {
+.App {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
