@@ -59,7 +59,7 @@ class Form extends React.Component  {
       this.props.updateItems(newItem)
     } else {
       this.handleOpenModal()
-      // Modal can do with been shunk
+        // Modal can do with been shunk
     }
   }
 
