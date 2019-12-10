@@ -27,8 +27,8 @@ class Form extends React.Component  {
     this.setState({ ...this.state, date });
   }
 
-  onChange = (time) => {
-      console.log('onTimeRangePickers', time)
+  onTimeChange = (time) => {
+    console.log('onTimeRangePickers', time)
     this.setState({ time:[ time.startTime, time.endTime ] })
   }
   
@@ -65,7 +65,7 @@ class Form extends React.Component  {
             <DatePicker
               className="date-picker"
               clearIcon={false}
-              onChange={this.onDateChange}
+              onChange={(e)=> this.onDateChange(e)}
               value={this.state.date}
             />
           </div>
@@ -76,7 +76,7 @@ class Form extends React.Component  {
               value={this.state.time}
               clearIcon={false}
               disableClock={true}
-              onChange={this.onChange}
+              onChange={(e)=> this.onTimeChange(e)}
             />
           </div>
           <button onClick={(e)=> this.onSubmit(e)}>Submit</button>

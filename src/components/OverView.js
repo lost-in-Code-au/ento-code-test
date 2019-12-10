@@ -1,16 +1,7 @@
 import React from 'react';
+import ItemMsg from './ItemMsg';
 
 class OverView extends React.Component  {
-
-  doesItemHaveMessage = (item) => {
-    if (!item.crit && !item.alert) {
-      return
-    } else if (item.crit && item.alert) {
-      return  <div className="crit-alert-msg"><span className="crit">{item.crit}</span><span className="alert">{item.alert}</span></div>
-    } else {
-      return <div className="crit-alert-msg"><span className={item.crit ? "crit only" : "alert only"}>{item.crit ? item.crit : item.alert}</span></div>
-    }
-  };
 
   deleteItem = (index) => {
     this.props.deleteItem(index)
@@ -22,9 +13,12 @@ class OverView extends React.Component  {
       return (
         <div id={index} className="item">
           <span className="delete-button" onClick={()=> this.deleteItem(index)}>X</span>
-          <p>{item.name}</p><p> Roll: {item.roll}</p>
-          <div className="">
-          { item.crit || item.alert ? this.doesItemHaveMessage(item) : null }
+          <div className="inner-text">
+            <p>{item.name}</p>
+            <p> Roll: {item.roll}</p>
+          </div>
+          <div className="onhover-animation">
+            { item.crit || item.alert ? <ItemMsg item={item} /> : null }
           </div>
         </div>
       )

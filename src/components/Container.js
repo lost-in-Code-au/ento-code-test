@@ -22,9 +22,9 @@ const MockData = [
   }
 ]
 const MockItems = [
-    { id: 5, name: "Reece", rolls: ["chef"], shift: [{date: "", startTime:"", endTime:""}], crit: '1 crit', alert: '1 alert' },
-    {id: 8, name: "Jake", rolls: ["Barista","Lockup"], shift: [{date: "", startTime:"", endTime:""}], crit: '1 crit', alert: false },
-    {id: 12, name: "John", rolls: ["Barista","Lockup"], shift: [{date: "", startTime:"", endTime:""}], crit: '1 crit', alert: false }
+    { id: 5, name: "Reece", rolls: ["chef"], shift: [{date: "", startTime:"", endTime:""}], crit: 'Something Critical is happening here', alert: 'There is a alert of some type here!' },
+    {id: 8, name: "Jake", rolls: ["Barista","Lockup"], shift: [{date: "", startTime:"", endTime:""}], crit: "it's bad man! :)", alert: false },
+    {id: 12, name: "John", rolls: ["Waiting-staff","Lockup"], shift: [{date: "", startTime:"", endTime:""}], crit: false, alert: "Someone let the dogs out!" }
   ]
 
 class Container extends React.Component {
