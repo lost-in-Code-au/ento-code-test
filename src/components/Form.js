@@ -14,12 +14,9 @@ class Form extends React.Component  {
     //Building state to put new shift together
     this.state = {
       date: new Date(),
-      employees: ( this.props.employees ? 
-        this.props.employees : 
-        [{ id: "0", name: "No Employees available", rolls: "", 
-          shift: {date: "", startTime:"", endTime:""}}] ),
+      employees: ( this.props.employees ? this.props.employees : false),
       selectedEmployee: null,
-      time: ["",""],
+      time: [false,false],
       showModal: false
     };
 
@@ -51,6 +48,10 @@ class Form extends React.Component  {
   onSubmit = (event) => {
     event.preventDefault()
     const { selectedEmployee, date, time} = this.state
+    console.log('time', time)
+    console.log('date', date)
+    console.log('selectedEmployee', selectedEmployee)
+    
     if(selectedEmployee && date && time) {
       const employee = this.state.employees.find(x => x.id == this.state.selectedEmployee)
       const newItem = {
