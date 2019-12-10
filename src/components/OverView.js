@@ -9,7 +9,6 @@ class OverView extends React.Component  {
   } 
 
   renderItems = (items) => {
-    console.log("items:", items)
     return items.map((item, index)=> {
       return (
         <div id={index} className="item">

@@ -1,17 +1,14 @@
-$grey_light: #B3B3B3;
-$grey_lighter: #DFE3E6;
-$grey_lightest: #f2f2f2;
-$grey_lightestest: #f7f7f7;
-$grey_darker: #666666;
-$grey_darkest: #333333;
+$grey_light: #DFE3E6;
+$grey_lightest: #f7f7f7;
+$grey_dark: #333333;
 $red: rgb(255, 95, 95);
 $yellow: rgb(255, 241, 110);
 
 @mixin form-inputs {
   height: 32px;
   padding: 6px;
-  background-color: $grey_lighter;
-  border: 1px solid $grey_darkest;
+  background-color: $grey_light;
+  border: 1px solid $grey_dark;
   border-radius: 5px;
   cursor: pointer;
   font-size: initial;
@@ -19,12 +16,12 @@ $yellow: rgb(255, 241, 110);
 
 .Scheduler {
   display: flex;
-  background-color: $grey_lightestest;
+  background-color: $grey_lightest;
   height: 80vh;
   
   .Form {
     flex-grow: 1;
-    border: $grey_darkest 1px solid;
+    border: $grey_dark 1px solid;
 
     .inputs {
       display: flex;
@@ -57,7 +54,7 @@ $yellow: rgb(255, 241, 110);
 
   .Over-view {
     flex-grow: 3;
-    border: $grey_darkest 1px solid;
+    border: $grey_dark 1px solid;
     
     .items-container {
       justify-content: flex-start;
@@ -70,7 +67,7 @@ $yellow: rgb(255, 241, 110);
         background-color: #FAFBFC;
         margin: 6px;
         padding: 2px 0px 2px 2px;
-        border: $grey_darkest solid 1px;
+        border: $grey_dark solid 1px;
         border-radius: 10px;
         min-width: 100px;
         .inner-text {
@@ -81,7 +78,7 @@ $yellow: rgb(255, 241, 110);
         }
         .delete-button {
           border-radius: 10px;
-          border: $grey_darkest solid 1px;
+          border: $grey_dark solid 1px;
           height: 18px;
           width: 18px;
           cursor: pointer;
@@ -157,7 +154,7 @@ $yellow: rgb(255, 241, 110);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: $grey_darkest;
+  color: $grey_dark;
 }
 
 .App-link {
