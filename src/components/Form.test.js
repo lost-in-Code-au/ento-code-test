@@ -16,3 +16,11 @@ test('Container header Text', () => {
   
   expect(linkElement).toBeInTheDocument();
 });
+
+
+// Tests needed:
+// 1. inputs update state for submition to redux
+// 2. redux successfully taked submitable object
+// 3. submitable objects are crosschecked for validation for both data 
+//    type and to pick up on crit & alerts for overview window
+// 4. Modal reacts on input failuire

@@ -7,3 +7,7 @@ test('Container can render', () => {
     const tree = render(<Container />)
     expect(tree).toMatchSnapshot()
 });
+
+// Tests needed:
+// 1. check that connection with store/redux is working
+// 2. check proptypes of incoming objects

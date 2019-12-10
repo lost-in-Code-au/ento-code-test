@@ -17,3 +17,10 @@ test('Container header Text', () => {
   
   expect(linkElement).toBeInTheDocument();
 });
+
+
+// Tests needed:
+// 1. items can be added
+// 2. items can have crit and alert status
+// 3. crit and alerts can be clicked
+// 4. items can be deleted
