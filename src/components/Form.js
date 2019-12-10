@@ -1,12 +1,17 @@
 import React from 'react';
+
+//Handling inputs
 import DatePicker from 'react-date-picker';
 import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
+//User flow responses
 import ReactModal from 'react-modal';
 
 class Form extends React.Component  {
 
   constructor(props) {
     super(props);
+
+    //Building state to put new shift together
     this.state = {
       date: new Date(),
       employees: ( this.props.employees ? 
@@ -17,6 +22,8 @@ class Form extends React.Component  {
       time: ["",""],
       showModal: false
     };
+
+    // would like to rewite in react@16 hooks way
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
@@ -29,18 +36,15 @@ class Form extends React.Component  {
     this.setState({ showModal: false });
   }
     
-
   onEmployeeChange = (event) => {
     this.setState({ selectedEmployee: event.target.value });
   }
 
   onDateChange = (date) => {
-    console.log('onDateChange', date)
     this.setState({ date });
   }
 
   onTimeChange = (time) => {
-    console.log('onTimeRangePickers', time)
     this.setState({ time: time })
   }
   
@@ -54,7 +58,9 @@ class Form extends React.Component  {
       rolls: ["Barista","Lockup"], 
       shift: {date: this.state.date, time: this.state },
       crit: '1 crit', alert: false }
-        // At the end of this object is where I would add the check function to see if there are any issuse in making the shift.
+        // At the end of this object is where I would add the check function to see if there are 
+        // any issuse in making the shift. Then hit a redux action from props to push new object 
+        // into items array(i.e. shifts over view)
 
       this.props.updateItems(newItem)
     } else {

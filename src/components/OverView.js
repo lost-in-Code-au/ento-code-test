@@ -3,6 +3,7 @@ import ItemMsg from './ItemMsg';
 
 class OverView extends React.Component  {
 
+  // Mock Redux action
   deleteItem = (index) => {
     this.props.deleteItem(index)
   } 

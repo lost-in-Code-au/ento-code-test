@@ -9,6 +9,7 @@ class ItemMsg extends React.Component  {
       showModal: false
     };
     
+    // Again would like to rewrite in react@16 hooks way
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
