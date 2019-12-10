@@ -14,8 +14,9 @@ class OverView extends React.Component  {
         <div id={index} className="item">
           <span className="delete-button" onClick={()=> this.deleteItem(index)}>X</span>
           <div className="inner-text">
+            <p><span>{item.shift.startTime}</span>-<span>{item.shift.endTime}</span></p>
+            <p> Rolls: {item.rolls.map((roll)=> <span>{roll} </span>)}</p>
             <p>{item.name}</p>
-            <p> Roll: {item.roll}</p>
           </div>
           <div className="onhover-animation">
             { item.crit || item.alert ? <ItemMsg item={item} /> : null }

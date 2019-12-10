@@ -1,6 +1,7 @@
 import React from 'react';
 import DatePicker from 'react-date-picker';
 import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
+import ReactModal from 'react-modal';
 
 class Form extends React.Component  {
 
@@ -11,12 +12,24 @@ class Form extends React.Component  {
       employees: ( this.props.employees ? 
         this.props.employees : 
         [{ id: "0", name: "No Employees available", rolls: "", 
-          shift: [ {date: "", startTime:"", endTime:""}]}] ),
+          shift: {date: "", startTime:"", endTime:""}}] ),
       selectedEmployee: null,
-      time: ["",""]
+      time: ["",""],
+      showModal: false
     };
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+  
+  handleOpenModal () {
+    this.setState({ showModal: true });
+  }
+  
+  handleCloseModal () {
+    this.setState({ showModal: false });
   }
     
+
   onEmployeeChange = (event) => {
     this.setState({ selectedEmployee: event.target.value });
   }
@@ -33,20 +46,20 @@ class Form extends React.Component  {
   
   onSubmit = (event) => {
     event.preventDefault()
-
-    console.log(this.props)
-    console.log("State:",this.state)
     const { selectedEmployee, date, time} = this.state
     if(selectedEmployee && date && time) {
       const employee = this.state.employees.find(x => x.id == this.state.selectedEmployee)
       const newItem = {
       id: employee.id, name: employee.name, 
       rolls: ["Barista","Lockup"], 
-      shift: [{date: this.state.date, time: this.state }], crit: '1 crit', alert: false }
-      console.log('newItem', newItem)
+      shift: {date: this.state.date, time: this.state },
+      crit: '1 crit', alert: false }
+        // At the end of this object is where I would add the check function to see if there are any issuse in making the shift.
+
       this.props.updateItems(newItem)
     } else {
-      alert("please fill out all of the form")
+      this.handleOpenModal()
+      // Modal can do with been shunk
     }
   }
 
@@ -87,6 +100,13 @@ class Form extends React.Component  {
           </div>
           <button onClick={(e)=> this.onSubmit(e)}>Submit</button>
         </div>
+        <ReactModal 
+            isOpen={this.state.showModal}
+            contentLabel="Minimal Modal Example"
+          >
+          <button onClick={()=> this.handleCloseModal()}>Close Modal</button>
+          <div>please fill out all of the form</div>
+        </ReactModal>
       </form>
     );
   }
