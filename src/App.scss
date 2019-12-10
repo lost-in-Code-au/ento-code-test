@@ -1,3 +1,4 @@
+// colors
 $grey_light: #DFE3E6;
 $grey_lightest: #f7f7f7;
 $grey_dark: #333333;
@@ -32,19 +33,23 @@ $yellow: rgb(255, 241, 110);
       }
       .date-picker {
         @include form-inputs;
-
+        //overwrite of lib component
         .react-date-picker__wrapper {
           border: none;
         }
+        //overwrite of lib component
         .react-date-picker__button {
           padding: 0;
         }
       }
+      //overwrite of lib component
       .react-timerange-picker {
         display: flex;
-        flex-direction: column;
 
         @include form-inputs;
+        .react-timerange-picker__button {
+          padding: 0;
+        }
         .react-timerange-picker__wrapper {
           border: none;
         }
@@ -86,7 +91,7 @@ $yellow: rgb(255, 241, 110);
         .onhover-animation {
           width: 4px;
           background: $red;
-          -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+          -webkit-transition: width 2s;
           transition: width 2s;
           overflow: hidden;
           margin-top: -2px;
