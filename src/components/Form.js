@@ -13,23 +13,22 @@ class Form extends React.Component  {
         [{ id: "0", name: "No Employees available", rolls: "", 
           shift: [ {date: "", startTime:"", endTime:""}]}] ),
       selectedEmployee: null,
-      time: ["9:00","16:00"]
+      time: ["",""]
     };
   }
     
   onEmployeeChange = (event) => {
-    console.log('event', event)
-    this.setState({ ...this.state, selectedEmployee: event.target });
+    this.setState({ selectedEmployee: event.target.value });
   }
 
   onDateChange = (date) => {
     console.log('onDateChange', date)
-    this.setState({ ...this.state, date });
+    this.setState({ date });
   }
 
   onTimeChange = (time) => {
     console.log('onTimeRangePickers', time)
-    this.setState({ time:[ time.startTime, time.endTime ] })
+    this.setState({ time: time })
   }
   
   onSubmit = (event) => {
@@ -37,9 +36,18 @@ class Form extends React.Component  {
 
     console.log(this.props)
     console.log("State:",this.state)
-    const newItem = {id: 8, name: "jeff", rolls: ["Barista","Lockup"], shift: [{date: "", startTime:"", endTime:""}], crit: '1 crit', alert: false }
-    console.log('newItem', newItem)
-    this.props.updateItems(newItem)
+    const { selectedEmployee, date, time} = this.state
+    if(selectedEmployee && date && time) {
+      const employee = this.state.employees.find(x => x.id == this.state.selectedEmployee)
+      const newItem = {
+      id: employee.id, name: employee.name, 
+      rolls: ["Barista","Lockup"], 
+      shift: [{date: this.state.date, time: this.state }], crit: '1 crit', alert: false }
+      console.log('newItem', newItem)
+      this.props.updateItems(newItem)
+    } else {
+      alert("please fill out all of the form")
+    }
   }
 
   render() {
@@ -52,11 +60,10 @@ class Form extends React.Component  {
             <select
               className="employee-picker"
               value={this.state.selectedEmployee ? this.state.selectedEmployee : <option className="">select a employee</option>}
-              onChange={(e) => this.onEmployeeChange(e)}
+              onChange={(e)=> this.onEmployeeChange(e)}
             >
               {this.state.employees.map((item) => {
-                console.log(item.name)
-                return <option className="" key={ item.id } value={ item.name }>{ item.name ? item.name : item.id }</option>;
+                return <option key={ item.id } value={ item.id }>{ item.name ? item.name : item.id }</option>;
               })}
             </select>
           </div>
@@ -74,7 +81,6 @@ class Form extends React.Component  {
             <TimeRangePicker
               className="time-range"
               value={this.state.time}
-              clearIcon={false}
               disableClock={true}
               onChange={(e)=> this.onTimeChange(e)}
             />
