@@ -9,7 +9,7 @@
     "@wojtekmaj/react-timerange-picker": "^2.4.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "node-sass": "^4.13.0",
     "react": "16",
     "react-date-picker": "^7.9.0",
